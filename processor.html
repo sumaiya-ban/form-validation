@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>hlw </h1>
+        <script type="text/javascript">
+            var queryString=window.location.search;
+            var queryStringParams=new URLSearchParams(queryString);
+            document.write("student name:",queryStringParams.get("txtStudentName"),"<br/>");
+            document.write("student password:",queryStringParams.get("txtStudentPassword"),"<br/>");
+            document.write("confirm password:",queryStringParams.get("txtReenterPassword"),"<br/>");
+            document.write("qualification:",queryStringParams.get("txtSelectQualification"));
+
+        </script>
+    </body>
+</html>

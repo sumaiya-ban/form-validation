@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+        <title>form validation</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        
+        <div id="logo" class="clearfix">
+                    <h2 id="logo1">BanGlaDesh</h2>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Service</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <div id="search">
+                            <input class="srch" type="search" placeholder="Type to text"/>
+                            <a href><button class="btn">search</button></a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            
+            <div id="bodyForm" class="clearflex">
+                <div id="registrationForm">
+            <h1>Registration Form</h1><br/>
+        <form action="processor.html" method="get" id="frmregistration" name="frmregistration" onsubmit="return validate()" onreset=" resetform()">
+            <div id="studentform" >
+                <label for="txtStudentName">student name:</label>
+                <input type="text" value="" placeholder="enter your name" id="txtStudentName" name="txtStudentName"/>
+                <span id="spnStudentNameValid"></span><br/><br/>
+                <label>password</label>
+                <input type="password" value="" placeholder="enter your password" id="txtStudentPassword" name="txtStudentPassword"/>
+                <span id="spnStudentPasswordValid"></span><br/><br/>
+                <label for="txtReenterPassword">Confirm password</label>
+                <input type="password" value="" placeholder="re-enter your password" id="txtReenterPassword" name="txtReenterPassword"/>
+                <span id="spnReenterPasswordValid"> </span><br/>
+                <label >qualification:</label>
+                <select id="txtSelectQualification" >
+                    <option value="-1">--select--</option>
+                    <option value="ssc">ssc</option>
+                    <option value="hsc">hsc</option>
+                    <option value="ug">ug</option>
+                    <option value="pg">pg</option>
+                </select>
+                <span id="spnSelectQualification"></span><br/><br/>
+                <label for="Selectgender">Gender:</label>
+                <input type="radio" value="male" id="rdmale" name="Selectgender"/>
+                <label>male</label>
+                <input type="radio" value="female" id="refemale" name="Selectgender"/>
+                <label>female</label>
+                <span id="spnSelectgenderValid"></span><br/>
+                <label>Email</label>
+                <input type="text" value="" placeholder="enter your email" id="txtEmail" name="txtEmail"/>
+                <span id="spnEamilValid"></span><br/>
+                    
+                <input type="submit" value="submit"/>
+                <input type="reset" value="reset"/>
+
+        <script>
+            function validate()
+            {
+                var isStudentNameValid=true;
+                var isStudentPasswordValid=true;
+                var isStudentReenterPasswordValid=true;
+                var isStudentQualificationValid=true;
+                var isEmailValid=true;
+                if(document.getElementById("txtStudentName").value=="")
+                {
+                    isStudentNameValid=false;
+                    document.getElementById("spnStudentNameValid").innerHTML="enter your name";
+                    document.getElementById("spnStudentNameValid").style.color="red";
+                }
+                else{
+                    isStudentNameValid=true;
+                    document.getElementById("spnStudentNameValid").innerHTML="valid";
+                    document.getElementById("spnStudentNameValid").style.color="green";
+
+                }
+                if(document.getElementById("txtStudentPassword").value=="")
+                {
+isStudentPasswordValid=false;
+document.getElementById("spnStudentPasswordValid").innerHTML="enter your Password";
+                    document.getElementById("spnStudentPasswordValid").style.color="red";
+
+                }
+                else{
+                    isStudentPasswordValid=true;
+                    document.getElementById("spnStudentPasswordValid").innerHTML="valid";
+                    document.getElementById("spnStudentPasswordValid").style.color="green";
+                }
+                if(document.getElementById("txtReenterPassword").value=="")
+                {
+                    isStudentReenterPasswordValid=false;
+                    document.getElementById("spnReenterPasswordValid").innerHTML="Re-enter your password";
+                    document.getElementById("spnReenterPasswordValid").style.color="red";
+
+                }
+                else if(document.getElementById("txtReenterPassword").value != document.getElementById("txtStudentPassword").value)
+                {
+                    isStudentReenterPasswordValid=false;
+                    document.getElementById("spnReenterPasswordValid").innerHTML="password and confirm password should be same";
+                    document.getElementById("spnReenterPasswordValid").style.color="red";
+                    
+                }
+                else{
+                    isStudentReenterPasswordValid=true;
+                    document.getElementById("spnReenterPasswordValid").innerHTML="valid";
+                    document.getElementById("spnReenterPasswordValid").style.color="green";
+                }
+                if(document.getElementById("txtSelectQualification").value=="-1")
+                {
+                    isStudentQualificationValid=false;
+                    document.getElementById("spnSelectQualification").innerHTML="select qualification";
+                    document.getElementById("spnSelectQualification").style.color="red";
+                }
+                else{
+                    isStudentQualificationValid=true;
+                    document.getElementById("spnSelectQualification").innerHTML="valid";
+                    document.getElementById("spnSelectQualification").style.color="red";
+                }
+                if(document.getElementById("txtEmail").value=="")
+                {
+                    isEmailValid=false;
+                    document.getElementById("spnEamilValid").innerHTML="enter email";
+                    document.getElementById("spnEamilValid").style.color="red";
+                }
+                else if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(document.getElementById("txtEmail").value)==false)
+                {
+                    isEmailValid=false;
+                    document.getElementById("spnEamilValid").innerHTML="enter correct email";
+                    document.getElementById("spnEamilValid").style.color="red";
+                }
+                else{
+                    isEmailValid=true;
+                    document.getElementById("spnEamilValid").innerHTML="valid";
+                    document.getElementById("spnEamilValid").style.color="green";
+                }
+                if(isStudentNameValid==false || isStudentPasswordValid==false || isStudentReenterPasswordValid==false ||isStudentQualificationValid==false || isEmailValid==false)
+                {
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+            function resetform()
+            {
+                document.getElementById("spnStudentNameValid").innerHTML="";
+                document.getElementById("spnReenterPasswordValid").innerHTML="";
+                document.getElementById("spnStudentPasswordValid").innerHTML="";
+                document.getElementById("spnSelectQualification").innerHTML="";
+                document.getElementById("spnEamilValid").innerHTML="";
+                
+
+            }
+        </script>
+
+    </div>
+
+</form>
+</div>
+<div id="aboutVersity">
+    <h2>American International University-Bangladesh</h2>
+</div>
+</div>
+</body>
+
+</html>
